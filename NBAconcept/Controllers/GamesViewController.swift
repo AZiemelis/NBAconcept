@@ -9,7 +9,7 @@ import UIKit
 import SDWebImage
 
 class GamesViewController: UIViewController {
-
+    
     var gamesVariable: [Game] = []
     
     @IBOutlet weak var TableView: UITableView!
@@ -18,7 +18,7 @@ class GamesViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        #warning("fix the date")
+       // #warning("fix the date")
         let Date = Date()
         let formatter = DateFormatter()
         
@@ -30,7 +30,7 @@ class GamesViewController: UIViewController {
         
         formatter.dateFormat = "yyyy-MM-dd"
         //let date = formatter.string(from: Date)
-        getNBAdata(date: "2021-11-21")
+        getNBAdata()
     }
     
     @IBAction func calendarBarButtonTapped(_ sender: UIBarButtonItem) {
@@ -48,50 +48,48 @@ class GamesViewController: UIViewController {
         dateLabel.text = formatter.string(from: Date)
     }
     
-    func getNBAdata (date: String) {
+    func getNBAdata () {
 
         let headers = [
             "x-rapidapi-host": "api-nba-v1.p.rapidapi.com",
             "x-rapidapi-key": "29a89b941dmshb710b982fc842fdp17f010jsne45e8742fe9a"
         ]
 
-        var request = URLRequest(url: URL(string: "https://api-nba-v1.p.rapidapi.com/games/date/2021-11-21")!)
+        let request = NSMutableURLRequest(url: NSURL(string: "https://api-nba-v1.p.rapidapi.com/games/date/2021-11-21")! as URL,
+                                                cachePolicy: .useProtocolCachePolicy,
+                                            timeoutInterval: 10.0)
         request.httpMethod = "GET"
         request.allHTTPHeaderFields = headers
-        
-        URLSession.shared.dataTask(with: request) { data, response, err in
-            if err != nil {
-                print(err?.localizedDescription)
-            }else {
-                print(response)
+
+        let session = URLSession.shared
+        let dataTask = session.dataTask(with: request as URLRequest, completionHandler: { (data, response, error) -> Void in
+            if (error != nil) {
+                print(error!)
+            } else {
+                let httpResponse = response as? HTTPURLResponse
+                print(httpResponse!)
             }
-            if let data = data {
-                if let json = try? JSONSerialization.jsonObject(with: data, options: JSONSerialization.ReadingOptions.mutableContainers)
-                    as? [String: Any]
-                {
-                    print(json)
+            
+            guard let data = data else {
+                    return
                 }
-            }
+            
             do {
-                let jsonData = try JSONDecoder().decode(gameCard.self, from: data!)
-                self.gamesVariable = jsonData.api.games
+                let jsonData = try JSONDecoder().decode(API.self, from: data)
                 DispatchQueue.main.async {
-                    print("self.Game: ", self.gamesVariable)
+                    self.gamesVariable = jsonData.api.games
+                    print(self.gamesVariable)
                     self.TableView.reloadData()
                 }
             }catch {
                 //print("THERE IS THE REQUEST!: ",request)
                 print("err:", error)
             }
-            
-            
-            
-            
-            
-        }.resume()
-        
-            
+        })
 
+        dataTask.resume()
+            
+        
             
      
     }
@@ -114,10 +112,11 @@ extension GamesViewController: UITableViewDelegate, UITableViewDataSource {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "gameCell", for: indexPath) as? GameTableViewCell else {return UITableViewCell()}
         
         let game = gamesVariable[indexPath.row]
-        cell.homeTeamLabel.text = game.arena
-        cell.awayTeamLabel.text = game.arena
+        cell.homeTeamLabel.text = game.hTeam.nickName
+        cell.awayTeamLabel.text = game.vTeam.nickName
         
-       // cell.homeTeamImage.sd_setImage(with: URL(string: game.arena), placeholderImage: UIImage(named: "team.png"))
+        cell.homeTeamImage.sd_setImage(with: URL(string: game.hTeam.logo), placeholderImage: UIImage(named: "team.png"))
+        cell.homeTeamImage.sd_setImage(with: URL(string: game.vTeam.logo), placeholderImage: UIImage(named: "team.png"))
         
         
         return cell
