@@ -12,7 +12,6 @@
         <!--Games List-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
                 <viewController title="Games List" id="BYZ-38-t0r" customClass="GamesViewController" customModule="NBAconcept" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
@@ -145,36 +144,50 @@
                         <outlet property="dateLabel" destination="MCK-z7-y0b" id="Tb4-Or-zmm"/>
                     </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2015.625" y="108.80281690140845"/>
         </scene>
         <!--Game Details-->
         <scene sceneID="4Jc-Zk-ciy">
             <objects>
-                <viewController title="Game Details" id="A0x-fo-UUB" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="GameDetailViewController" title="Game Details" id="A0x-fo-UUB" customClass="GameDetailViewController" customModule="NBAconcept" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="SqU-7h-tPz">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kII-Q7-BFr">
+                                <rect key="frame" x="20" y="121" width="116" height="159"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="awayButton"/>
+                                <connections>
+                                    <segue destination="F7G-Gt-ESq" kind="presentation" id="Wuc-vo-qO5"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FQS-y0-2AS">
+                                <rect key="frame" x="280" y="121" width="99" height="170"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="homeButton"/>
+                                <connections>
+                                    <segue destination="F7G-Gt-ESq" kind="presentation" id="MMK-YB-qMC"/>
+                                </connections>
+                            </button>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Denver Nuggets" translatesAutoresizingMaskIntoConstraints="NO" id="TuM-Kt-exO">
-                                <rect key="frame" x="20" y="104" width="120" height="120"/>
+                                <rect key="frame" x="34" y="121" width="90" height="90"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Golden State Warriors" translatesAutoresizingMaskIntoConstraints="NO" id="eub-WG-AtM">
-                                <rect key="frame" x="274" y="104" width="120" height="120"/>
+                                <rect key="frame" x="289" y="121" width="90" height="90"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="99:106" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nYk-Sd-IYc">
                                 <rect key="frame" x="144" y="130" width="127" height="68"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="29"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Summary" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qcv-bZ-JPn">
-                                <rect key="frame" x="20" y="55" width="197" height="41"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="20"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -290,7 +303,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="person" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="qvA-YK-yra">
-                                <rect key="frame" x="10" y="677" width="93" height="85"/>
+                                <rect key="frame" x="20" y="677.5" width="93" height="85"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="tintColor" systemColor="labelColor"/>
                             </imageView>
@@ -308,15 +321,8 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cra-sU-dgv">
-                                <rect key="frame" x="121" y="676" width="75" height="81"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="person" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="Vp2-5Y-e3b">
-                                <rect key="frame" x="301" y="677" width="93" height="85"/>
+                                <rect key="frame" x="301" y="673.5" width="93" height="85"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="tintColor" systemColor="labelColor"/>
                             </imageView>
@@ -334,29 +340,30 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cra-sU-dgv">
+                                <rect key="frame" x="121" y="676" width="75" height="81"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Vf4-zY-uaY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
+                    <connections>
+                        <outlet property="awayTeamImage" destination="TuM-Kt-exO" id="aRc-yr-caP"/>
+                        <outlet property="awayTeamLabel" destination="ww4-9Y-d1O" id="36d-jB-FEl"/>
+                        <outlet property="homeTeamImage" destination="eub-WG-AtM" id="9lt-3K-YlY"/>
+                        <outlet property="homeTeamLabel" destination="0lj-MS-MT1" id="YdA-17-hfY"/>
+                        <outlet property="playerNameLabel" destination="krG-aH-bHr" id="TpZ-cE-RXZ"/>
+                        <outlet property="playerProfileImage" destination="j1Q-wL-Do2" id="zwn-Yf-6Tf"/>
+                        <outlet property="resultLabel" destination="nYk-Sd-IYc" id="R64-HH-MOI"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KLS-Kn-sbf" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2834.7826086956525" y="107.8125"/>
-        </scene>
-        <!--Player Career Page-->
-        <scene sceneID="xmK-Wt-OZ0">
-            <objects>
-                <viewController title="Player Career Page" id="LK9-ig-ASu" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="H2k-9e-tlb">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <viewLayoutGuide key="safeArea" id="wtI-Ot-cdQ"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="QWI-Fu-atV" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="3739" y="108"/>
         </scene>
         <!--Standings-->
         <scene sceneID="KFp-aZ-Tcf">
@@ -410,7 +417,7 @@
                                     <color key="color" systemColor="systemIndigoColor"/>
                                 </activityIndicatorView>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="79" id="d2c-X2-3Yh">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="standingCell" rowHeight="79" id="d2c-X2-3Yh">
                                         <rect key="frame" x="0.0" y="44.5" width="414" height="79"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="d2c-X2-3Yh" id="xH4-Oh-5LE">
@@ -493,6 +500,41 @@
             </objects>
             <point key="canvasLocation" x="2010.144927536232" y="768.75"/>
         </scene>
+        <!--Web View Controller-->
+        <scene sceneID="gQq-XH-Mz9">
+            <objects>
+                <viewController id="F7G-Gt-ESq" customClass="WebViewController" customModule="NBAconcept" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="5Xl-Y6-Qcd">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <wkWebView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QKJ-ST-3Og">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <wkWebViewConfiguration key="configuration">
+                                    <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
+                                    <wkPreferences key="preferences"/>
+                                </wkWebViewConfiguration>
+                            </wkWebView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="1fF-8T-NYU"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="QKJ-ST-3Og" secondAttribute="bottom" id="FFs-Q4-tpJ"/>
+                            <constraint firstItem="QKJ-ST-3Og" firstAttribute="trailing" secondItem="1fF-8T-NYU" secondAttribute="trailing" id="eef-8o-42v"/>
+                            <constraint firstItem="QKJ-ST-3Og" firstAttribute="leading" secondItem="1fF-8T-NYU" secondAttribute="leading" id="q4X-lv-gwV"/>
+                            <constraint firstItem="QKJ-ST-3Og" firstAttribute="top" secondItem="1fF-8T-NYU" secondAttribute="top" id="vWF-bm-BPK"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="mds-D8-Je0"/>
+                    <connections>
+                        <outlet property="WebView" destination="QKJ-ST-3Og" id="9gO-hV-EIz"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="eFx-E2-5yJ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3708.6956521739135" y="107.8125"/>
+        </scene>
         <!--Games-->
         <scene sceneID="GBb-y5-HaU">
             <objects>
@@ -532,6 +574,9 @@
             <point key="canvasLocation" x="-133" y="384"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="Wuc-vo-qO5"/>
+    </inferredMetricsTieBreakers>
     <resources>
         <image name="Dallas Mavericks" width="1200" height="1248"/>
         <image name="Denver Nuggets" width="2125" height="2159"/>

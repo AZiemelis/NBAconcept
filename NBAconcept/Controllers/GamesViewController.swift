@@ -137,12 +137,27 @@ extension GamesViewController: UITableViewDelegate, UITableViewDataSource {
         return cell
     
     }
-//    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
-//        guard let vc = storyboard.instantiateInitialViewController(withIdentifier: )
-//    }
-//
-//
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let storybaord = UIStoryboard(name: "Main", bundle: Bundle.main)
+        
+        guard let vc = storybaord.instantiateViewController(withIdentifier: "GameDetailViewController") as? GameDetailViewController else {return}
+        
+        let item = gamesVariable[indexPath.row]
+        
+        vc.gameId = item.gameId
+        
+        vc.awayTeamLogo = item.vTeam.logo
+        vc.awayTeamFullName = item.vTeam.fullName
+        vc.awayTeamPoints = item.vTeam.score.points
+        
+        vc.homeTeamLogo = item.hTeam.logo
+        vc.homeTeamFullName = item.hTeam.fullName
+        vc.homeTeamPoints = item.hTeam.score.points
+        
+        navigationController?.pushViewController(vc, animated: true)
+    }
+    
     
     
 }

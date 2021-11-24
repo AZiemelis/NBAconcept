@@ -6,13 +6,29 @@
 //
 
 import UIKit
+import WebKit
 
-class WebViewController: UIViewController {
+class WebViewController: UIViewController, WKNavigationDelegate  {
 
+    var urlString = String()
+    @IBOutlet weak var WebView: WKWebView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        self.title = "Web"
+        guard let url = URL(string: urlString) else {return}
+        
+        WebView.load(URLRequest(url: url))
+        
+    }
+    
+    func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
+        print("didFinish navigation")
+    }
+    
+    func webView(_ webView: WKWebView, didStartProvisionalNavigation navigation: WKNavigation!) {
+        print("didStartProvisionNavigation")
     }
     
 
