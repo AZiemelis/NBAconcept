@@ -25,6 +25,7 @@ struct Game: Codable {
     let vTeam: versusTeam
     let hTeam: homeTeam
 
+}
     struct homeTeam: Codable {
         let teamId: String
         let shortName: String
@@ -52,19 +53,4 @@ struct Game: Codable {
         let points: String
     }
     
-//    enum CodingKeys: String, CodingKey {
-//        case date, gameId, arena, city
-//        case vTeam, teamId, shortName, fullName
-//        case points, hTeam, vTeamNickname, hTeamNickname
-//        case logo
-//    }
-}
-//
-//struct gameCard: Decodable {
-//    var games: [Game]
-//
-//}
-//
-//struct gameResponse: Decodable {
-//    var api: gameCard
-//}
+

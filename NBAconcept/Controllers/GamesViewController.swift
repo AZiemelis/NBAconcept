@@ -14,6 +14,7 @@ class GamesViewController: UIViewController {
     
     @IBOutlet weak var TableView: UITableView!
     @IBOutlet weak var dateLabel: UILabel!
+    @IBOutlet weak var activityIndicatorView: UIActivityIndicatorView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,6 +32,23 @@ class GamesViewController: UIViewController {
         formatter.dateFormat = "yyyy-MM-dd"
         //let date = formatter.string(from: Date)
         getNBAdata()
+        
+    }
+    
+    func activityIndicator(animated: Bool) {
+        DispatchQueue.main.async {
+            if animated {
+                
+                self.activityIndicatorView.isHidden = false
+                self.activityIndicatorView.startAnimating()
+            
+            }else {
+                
+                self.activityIndicatorView.isHidden = true
+                self.activityIndicatorView.startAnimating()
+                
+            }
+        }
     }
     
     @IBAction func calendarBarButtonTapped(_ sender: UIBarButtonItem) {
@@ -49,19 +67,20 @@ class GamesViewController: UIViewController {
     }
     
     func getNBAdata () {
-
+        activityIndicator(animated: true)
         let headers = [
             "x-rapidapi-host": "api-nba-v1.p.rapidapi.com",
             "x-rapidapi-key": "29a89b941dmshb710b982fc842fdp17f010jsne45e8742fe9a"
         ]
 
-        let request = NSMutableURLRequest(url: NSURL(string: "https://api-nba-v1.p.rapidapi.com/games/date/2021-11-21")! as URL,
+        let request = NSMutableURLRequest(url: NSURL(string: "https://api-nba-v1.p.rapidapi.com/games/date/2021-11-24")! as URL,
                                                 cachePolicy: .useProtocolCachePolicy,
                                             timeoutInterval: 10.0)
         request.httpMethod = "GET"
         request.allHTTPHeaderFields = headers
 
         let session = URLSession.shared
+        
         let dataTask = session.dataTask(with: request as URLRequest, completionHandler: { (data, response, error) -> Void in
             if (error != nil) {
                 print(error!)
@@ -80,18 +99,13 @@ class GamesViewController: UIViewController {
                     self.gamesVariable = jsonData.api.games
                     print(self.gamesVariable)
                     self.TableView.reloadData()
+                    self.activityIndicator(animated: false)
                 }
             }catch {
-                //print("THERE IS THE REQUEST!: ",request)
                 print("err:", error)
             }
         })
-
         dataTask.resume()
-            
-        
-            
-     
     }
     
 }
@@ -104,7 +118,7 @@ extension GamesViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat  {
-        return 300
+        return 240
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -116,8 +130,9 @@ extension GamesViewController: UITableViewDelegate, UITableViewDataSource {
         cell.awayTeamLabel.text = game.vTeam.nickName
         
         cell.homeTeamImage.sd_setImage(with: URL(string: game.hTeam.logo), placeholderImage: UIImage(named: "team.png"))
-        cell.homeTeamImage.sd_setImage(with: URL(string: game.vTeam.logo), placeholderImage: UIImage(named: "team.png"))
+        cell.awayTeamImage.sd_setImage(with: URL(string: game.vTeam.logo), placeholderImage: UIImage(named: "team.png"))
         
+        cell.resultLabel.text = "\(game.hTeam.score.points):\(game.vTeam.score.points)"
         
         return cell
     
