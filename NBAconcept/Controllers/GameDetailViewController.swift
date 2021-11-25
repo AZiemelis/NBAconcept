@@ -82,6 +82,10 @@ class GameDetailViewController: UIViewController {
         
     }
     
+    override open var shouldAutorotate: Bool {
+        return false
+    }
+    
     func activityIndicator(animated: Bool) {
         DispatchQueue.main.async {
             if animated {
