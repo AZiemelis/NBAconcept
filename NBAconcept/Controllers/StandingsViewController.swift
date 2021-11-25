@@ -33,16 +33,16 @@ class StandingsViewController: UIViewController {
     
     @IBAction func calendarButtonTapped(_ sender: UIBarButtonItem) {
         var alertController:UIAlertController?
-            alertController = UIAlertController(title: "Enter Text",
-                message: "Enter some text below",
+            alertController = UIAlertController(title: "Enter a season year",
+                message: "Enter a year number",
                                                 preferredStyle: .alert)
 
         alertController!.addTextField(
             configurationHandler: {(textField: UITextField!) in
-                    textField.placeholder = "Enter something"
+                    textField.placeholder = "Enter year"
             })
 
-            let action = UIAlertAction(title: "Submit",
+            let action = UIAlertAction(title: "OK",
                                        style: UIAlertAction.Style.default,
                                        handler: {[weak self]
                                        (paramAction:UIAlertAction!) in
@@ -114,52 +114,6 @@ class StandingsViewController: UIViewController {
 
         dataTask.resume()
     }
-    
-//    func getTeamsInfo(teamId: String) {
-//        let headers = [
-//            "x-rapidapi-host": "api-nba-v1.p.rapidapi.com",
-//            "x-rapidapi-key": "29a89b941dmshb710b982fc842fdp17f010jsne45e8742fe9a"
-//        ]
-//
-//        let request = NSMutableURLRequest(url: NSURL(string: "https://api-nba-v1.p.rapidapi.com/teams/teamId/11")! as URL,
-//                                                cachePolicy: .useProtocolCachePolicy,
-//                                            timeoutInterval: 10.0)
-//        request.httpMethod = "GET"
-//        request.allHTTPHeaderFields = headers
-//
-//        let session = URLSession.shared
-//        let dataTask = session.dataTask(with: request as URLRequest, completionHandler: { (data, response, error) -> Void in
-//            if (error != nil) {
-//                print(error!)
-//            } else {
-//                let httpResponse = response as? HTTPURLResponse
-//                print(httpResponse!)
-//            }
-//
-//            do {
-//                let jsonData = try JSONDecoder().decode(TeamsAPI.self, from: data!)
-//                DispatchQueue.main.async {
-//                    self.teamVariable = jsonData.api.teams
-//
-////                    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-////                        guard let cell = tableView.dequeueReusableCell(withIdentifier: "standingCell", for: indexPath) as? StandingsTableViewCell else {return UITableViewCell()}
-////
-////                        cell.teamShortnameLabel.text = self.teamVariable[indexPath.row].shortName
-////                        cell.teamImage.sd_setImage(with: URL(string: self.teamVariable[indexPath.row].logo))
-////
-////                        return cell
-////                    }
-//                    self.tableView.reloadData()
-//
-//                   //print(self.teamVariable)
-//                }
-//            }catch {
-//                print("err:", error)
-//            }
-//
-//        })
-//        dataTask.resume()
-//    }
 
     @IBAction func segementValueChanged(_ sender: UISegmentedControl) {
         valueChanged = true
