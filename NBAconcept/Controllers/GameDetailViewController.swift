@@ -16,6 +16,8 @@ class GameDetailViewController: UIViewController {
 
     var gameDetail: [GameDetail] = []
     
+    @IBOutlet weak var activityIndicatorView: UIActivityIndicatorView!
+    
     @IBOutlet weak var homeTeamImage: UIImageView!
     @IBOutlet weak var awayTeamImage: UIImageView!
     @IBOutlet weak var homeTeamLabel: UILabel!
@@ -74,47 +76,26 @@ class GameDetailViewController: UIViewController {
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         context = appDelegate.persistentContainer.viewContext
         
-        var homePlayerMaxPoints: Int = 0
-        var homePlayerMaxAssists: Int = 0
-        var homePlayerMaxRebounds: Int = 0
-
-        for i in gameDetail {
-            for j in i.hTeam.leaders {
-                if j.points != nil {
-                    if Int(j.points!)! >= homePlayerMaxPoints {
-                        homePlayerMaxPoints = Int(j.points!)!
-                        homePlayerNameLabelPoints.text = j.name
-                        homePlayerPointsLabel.text = String(homePlayerMaxPoints)
-
-
-                        print(j.points!)
-                    }
-                }else if j.rebounds != nil {
-                    if Int(j.rebounds!)! >= homePlayerMaxRebounds {
-                        homePlayerMaxRebounds = Int(j.rebounds!)!
-                        homePlayerNameLabelRebounds.text = j.name
-                        homePlayerReboundsLabel.text = String(homePlayerMaxRebounds)
-                        
-                        print(j.rebounds!)
-                    }
-                }else if j.assists != nil {
-                    if Int(j.assists!)! >= homePlayerMaxAssists {
-                        homePlayerMaxAssists = Int(j.assists!)!
-                        homePlayerNameLabelAssists.text = j.name
-                        homePlayerAssistsLabel.text = String(homePlayerMaxAssists)
-                        
-                        print(j.assists!)
-                    }
-                }
+    }
+    
+    func activityIndicator(animated: Bool) {
+        DispatchQueue.main.async {
+            if animated {
+                
+                self.activityIndicatorView.isHidden = false
+                self.activityIndicatorView.startAnimating()
+            
+            }else {
+                
+                self.activityIndicatorView.isHidden = true
+                self.activityIndicatorView.startAnimating()
+                
             }
         }
-        
-        
-        
-        
     }
     
     func getNBADetailData (gameID: String) {
+        activityIndicator(animated: true)
         let headers = [
             "x-rapidapi-host": "api-nba-v1.p.rapidapi.com",
             "x-rapidapi-key": "29a89b941dmshb710b982fc842fdp17f010jsne45e8742fe9a"
@@ -216,9 +197,7 @@ class GameDetailViewController: UIViewController {
                         }
                     }
                     
-                    
-
-                    
+                    self.activityIndicator(animated: false)
                 }
             }catch {
                 print("err:", error)
