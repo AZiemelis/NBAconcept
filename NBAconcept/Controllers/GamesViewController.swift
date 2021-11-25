@@ -13,25 +13,29 @@ class GamesViewController: UIViewController {
     var gamesVariable: [Game] = []
     
     @IBOutlet weak var TableView: UITableView!
-    @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var activityIndicatorView: UIActivityIndicatorView!
+    @IBOutlet weak var dateTextField: UITextField!
+    let datePicker = UIDatePicker()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-       // #warning("fix the date")
-        let Date = Date()
+        createDatePicker()
+
+        var date = Date()
         let formatter = DateFormatter()
         
         formatter.timeZone = .current
         formatter.locale = .current
         formatter.dateFormat = "EEEE, MMM d, yyyy"
+        let stringDateTextField: String = formatter.string(from: date)
+        dateTextField.text = stringDateTextField
         
-        dateLabel.text = formatter.string(from: Date)
         
         formatter.dateFormat = "yyyy-MM-dd"
-        //let date = formatter.string(from: Date)
-        getNBAdata()
+        let stringDateGamesData: String = formatter.string(from: date)
+        createDatePicker()
+
+        getNBAdata(gamesDate: stringDateGamesData)
         
     }
     
@@ -51,29 +55,46 @@ class GamesViewController: UIViewController {
         }
     }
     
-    @IBAction func calendarBarButtonTapped(_ sender: UIBarButtonItem) {
+   
+    
+    func createDatePicker() {
+        let toolbar = UIToolbar()
+        toolbar.sizeToFit()
         
+        let doneBtn = UIBarButtonItem(barButtonSystemItem: .done, target: nil, action: #selector(donePressed))
+        toolbar.setItems([doneBtn], animated: true)
+        
+        dateTextField.inputAccessoryView = toolbar
+        dateTextField.inputView = datePicker
+        
+        datePicker.datePickerMode = .date
+        datePicker.preferredDatePickerStyle = .wheels
+        datePicker.sizeToFit()
     }
     
-    func calendar() {
-        let Date = Date()
+    @objc func donePressed() {
+        
         let formatter = DateFormatter()
-        
-        formatter.timeZone = .current
-        formatter.locale = .current
+        formatter.dateStyle = .medium
+        formatter.timeStyle = .none
         formatter.dateFormat = "EEEE, MMM d, yyyy"
+        dateTextField.text = formatter.string(from: datePicker.date)
+        self.view.endEditing(true)
         
-        dateLabel.text = formatter.string(from: Date)
+        formatter.dateFormat = "yyyy-MM-dd"
+        let dateInput = formatter.string(for: datePicker.date)
+        getNBAdata(gamesDate: dateInput!)
     }
+
     
-    func getNBAdata () {
+    func getNBAdata (gamesDate: String) {
         activityIndicator(animated: true)
         let headers = [
             "x-rapidapi-host": "api-nba-v1.p.rapidapi.com",
             "x-rapidapi-key": "29a89b941dmshb710b982fc842fdp17f010jsne45e8742fe9a"
         ]
 
-        let request = NSMutableURLRequest(url: NSURL(string: "https://api-nba-v1.p.rapidapi.com/games/date/2021-11-24")! as URL,
+        let request = NSMutableURLRequest(url: NSURL(string: "https://api-nba-v1.p.rapidapi.com/games/date/\(gamesDate)")! as URL,
                                                 cachePolicy: .useProtocolCachePolicy,
                                             timeoutInterval: 10.0)
         request.httpMethod = "GET"
@@ -150,10 +171,13 @@ extension GamesViewController: UITableViewDelegate, UITableViewDataSource {
         vc.awayTeamLogo = item.vTeam.logo
         vc.awayTeamFullName = item.vTeam.fullName
         vc.awayTeamPoints = item.vTeam.score.points
+        vc.awayTeamShortName = item.vTeam.shortName
         
         vc.homeTeamLogo = item.hTeam.logo
         vc.homeTeamFullName = item.hTeam.fullName
         vc.homeTeamPoints = item.hTeam.score.points
+        vc.homeTeamShortName = item.hTeam.shortName
+        vc.fullScore = "\(item.hTeam.score.points):\(item.vTeam.score.points)"
         
         navigationController?.pushViewController(vc, animated: true)
     }
