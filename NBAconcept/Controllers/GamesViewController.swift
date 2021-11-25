@@ -151,6 +151,7 @@ extension GamesViewController: UITableViewDelegate, UITableViewDataSource {
         
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "gameCell", for: indexPath) as? GameTableViewCell else {return UITableViewCell()}
         
+
         let game = gamesVariable[indexPath.row]
         cell.homeTeamLabel.text = game.hTeam.nickName
         cell.awayTeamLabel.text = game.vTeam.nickName
@@ -158,7 +159,12 @@ extension GamesViewController: UITableViewDelegate, UITableViewDataSource {
         cell.homeTeamImage.sd_setImage(with: URL(string: game.hTeam.logo), placeholderImage: UIImage(named: "team.png"))
         cell.awayTeamImage.sd_setImage(with: URL(string: game.vTeam.logo), placeholderImage: UIImage(named: "team.png"))
         
-        cell.resultLabel.text = "\(game.vTeam.score.points):\(game.hTeam.score.points)"
+        if game.vTeam.score.points != "" && game.hTeam.score.points != "" {
+            cell.resultLabel.text = "\(game.vTeam.score.points):\(game.hTeam.score.points)"
+        } else {
+            cell.resultLabel.text = ""
+        }
+
         
         return cell
     
@@ -182,7 +188,14 @@ extension GamesViewController: UITableViewDelegate, UITableViewDataSource {
         vc.homeTeamFullName = item.hTeam.fullName
         vc.homeTeamPoints = item.hTeam.score.points
         vc.homeTeamShortName = item.hTeam.shortName
-        vc.fullScore = "\(item.vTeam.score.points):\(item.hTeam.score.points)"
+        
+        if item.vTeam.score.points != "" && item.hTeam.score.points != "" {
+            vc.fullScore = "\(item.vTeam.score.points):\(item.hTeam.score.points)"
+        } else {
+            vc.fullScore = ""
+        }
+        
+        
         
         navigationController?.pushViewController(vc, animated: true)
     }

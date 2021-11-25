@@ -125,6 +125,10 @@ class StandingsViewController: UIViewController {
 extension StandingsViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 1
+    }
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
         return 15
     }
     
@@ -139,11 +143,11 @@ extension StandingsViewController: UITableViewDelegate, UITableViewDataSource {
         switch segmentedControl.selectedSegmentIndex {
         case 0:
             for i in standingsVariable {
-                if i.conference.name == "west" && i.conference.rank == String(indexPath.row + 1) {
+                if i.conference.name == "west" && i.conference.rank == String(indexPath.section + 1) {
 
                     //getTeamsInfo(teamId: i.teamId)
         
-                    cell.positionLabel.text = String(indexPath.row + 1)
+                    cell.positionLabel.text = String(indexPath.section + 1)
                     cell.winsLabel.text = i.win
                     cell.lossesLabel.text = i.loss
                     cell.teamShortnameLabel.text = "teamID: \(i.teamId)"
@@ -151,11 +155,11 @@ extension StandingsViewController: UITableViewDelegate, UITableViewDataSource {
             }
         default:
             for i in standingsVariable {
-                if i.conference.name == "east" && i.conference.rank == String(indexPath.row + 1) {
+                if i.conference.name == "east" && i.conference.rank == String(indexPath.section + 1) {
 
                     //getTeamsInfo(teamId: i.teamId)
         
-                    cell.positionLabel.text = String(indexPath.row + 1)
+                    cell.positionLabel.text = String(indexPath.section + 1)
                     cell.winsLabel.text = i.win
                     cell.lossesLabel.text = i.loss
                     cell.teamShortnameLabel.text = "teamID: \(i.teamId)"
@@ -163,6 +167,7 @@ extension StandingsViewController: UITableViewDelegate, UITableViewDataSource {
             }
         }
             
+        
         
         return cell
     }
