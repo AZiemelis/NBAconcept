@@ -61,7 +61,7 @@ class GameDetailViewController: UIViewController {
         super.viewDidLoad()
         
         getNBADetailData(gameID: gameId)
-        
+        print(gameId)
         homeTeamImage.sd_setImage(with: URL(string: homeTeamLogo), placeholderImage: UIImage(named: "team.png"))
         
         awayTeamImage.sd_setImage(with: URL(string: awayTeamLogo), placeholderImage: UIImage(named: "team.png"))
@@ -146,21 +146,78 @@ class GameDetailViewController: UIViewController {
                     
                     self.gameDetail = jsonData.api.game
                     
-                    //print(self.gameDetail)
-//                    var homePlayerMaxPoints: Int = 0
-//                    for i in self.gameDetail {
-//                        for j in i.vTeam.leaders {
-//                            if j.points != nil {
-//                                if Int(j.points!)! >= homePlayerMaxPoints {
-//                                    homePlayerMaxPoints = Int(j.points!)!
-//
-//                                }
-//                            }
-//
-//
-//                        }
-//                    }
-//                    print(homePlayerMaxPoints)
+                   // print(self.gameDetail)
+                    
+                    var homePlayerMaxPoints: Int = 0
+                    var homePlayerMaxAssists: Int = 0
+                    var homePlayerMaxRebounds: Int = 0
+                    
+                    var awayPlayerMaxPoints: Int = 0
+                    var awayPlayerMaxAssists: Int = 0
+                    var awayPlayerMaxRebounds: Int = 0
+                    
+                    for i in self.gameDetail {
+                        for j in i.hTeam.leaders {
+                            if j.points != nil {
+                                if Int(j.points!)! >= homePlayerMaxPoints {
+                                    homePlayerMaxPoints = Int(j.points!)!
+                                    self.homePlayerNameLabelPoints.text = j.name
+                                    self.homePlayerPointsLabel.text = String(homePlayerMaxPoints)
+
+
+                                }
+                            }else if j.rebounds != nil {
+                                if Int(j.rebounds!)! >= homePlayerMaxRebounds {
+                                    homePlayerMaxRebounds = Int(j.rebounds!)!
+                                    self.homePlayerNameLabelRebounds.text = j.name
+                                    self.homePlayerReboundsLabel.text = String(homePlayerMaxRebounds)
+            
+                                }
+                            }else if j.assists != nil {
+                                if Int(j.assists!)! >= homePlayerMaxAssists {
+                                    homePlayerMaxAssists = Int(j.assists!)!
+                                    self.homePlayerNameLabelAssists.text = j.name
+                                    self.homePlayerAssistsLabel.text = String(homePlayerMaxAssists)
+                                    
+                   
+                                }
+                            }
+                        }
+                    }
+                    
+                    for i in self.gameDetail {
+                        for j in i.vTeam.leaders {
+                            if j.points != nil {
+                                if Int(j.points!)! >= awayPlayerMaxPoints {
+                                    awayPlayerMaxPoints = Int(j.points!)!
+                                    self.awayPlayerNameLabelPoints.text = j.name
+                                    self.awayPlayerPointsLabel.text = String(awayPlayerMaxPoints)
+
+
+          
+                                }
+                            }else if j.rebounds != nil {
+                                if Int(j.rebounds!)! >= awayPlayerMaxRebounds {
+                                    awayPlayerMaxRebounds = Int(j.rebounds!)!
+                                    self.awayPlayerNameLabelRebounds.text = j.name
+                                    self.awayPlayerReboundsLabel.text = String(awayPlayerMaxRebounds)
+                                    
+
+                                }
+                            }else if j.assists != nil {
+                                if Int(j.assists!)! >= awayPlayerMaxAssists {
+                                    awayPlayerMaxAssists = Int(j.assists!)!
+                                    self.awayPlayerNameLabelAssists.text = j.name
+                                    self.awayPlayerAssitsLabel.text = String(awayPlayerMaxAssists)
+                                    
+        
+                                }
+                            }
+                        }
+                    }
+                    
+                    
+
                     
                 }
             }catch {

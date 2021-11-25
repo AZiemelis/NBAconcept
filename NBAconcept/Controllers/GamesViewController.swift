@@ -158,7 +158,7 @@ extension GamesViewController: UITableViewDelegate, UITableViewDataSource {
         cell.homeTeamImage.sd_setImage(with: URL(string: game.hTeam.logo), placeholderImage: UIImage(named: "team.png"))
         cell.awayTeamImage.sd_setImage(with: URL(string: game.vTeam.logo), placeholderImage: UIImage(named: "team.png"))
         
-        cell.resultLabel.text = "\(game.hTeam.score.points):\(game.vTeam.score.points)"
+        cell.resultLabel.text = "\(game.vTeam.score.points):\(game.hTeam.score.points)"
         
         return cell
     
@@ -182,7 +182,7 @@ extension GamesViewController: UITableViewDelegate, UITableViewDataSource {
         vc.homeTeamFullName = item.hTeam.fullName
         vc.homeTeamPoints = item.hTeam.score.points
         vc.homeTeamShortName = item.hTeam.shortName
-        vc.fullScore = "\(item.hTeam.score.points):\(item.vTeam.score.points)"
+        vc.fullScore = "\(item.vTeam.score.points):\(item.hTeam.score.points)"
         
         navigationController?.pushViewController(vc, animated: true)
     }

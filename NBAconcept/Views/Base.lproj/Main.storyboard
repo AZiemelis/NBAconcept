@@ -188,7 +188,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Giannis Antetokoumpo" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DeE-cn-xUz">
-                                <rect key="frame" x="16" y="458" width="189" height="21"/>
+                                <rect key="frame" x="16" y="429" width="189" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
                                 <nil key="textColor"/>
@@ -197,14 +197,7 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="krG-aH-bHr">
                                 <rect key="frame" x="49" y="369" width="75" height="81"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Giannis Antetokoumpo" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bbg-xZ-2uB">
-                                <rect key="frame" x="219" y="458.5" width="189" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="30"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -216,7 +209,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Giannis Antetokoumpo" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RQL-HB-Hk0">
-                                <rect key="frame" x="16" y="611" width="189" height="21"/>
+                                <rect key="frame" x="16" y="583" width="189" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
                                 <nil key="textColor"/>
@@ -225,21 +218,21 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DZi-kM-48d">
                                 <rect key="frame" x="49" y="523" width="75" height="81"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="30"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Giannis Antetokoumpo" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jPF-yM-Tq2">
-                                <rect key="frame" x="219" y="611" width="189" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Giannis Antetokoumpo" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jPF-yM-Tq2">
+                                <rect key="frame" x="219" y="583" width="189" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Aej-XA-WUa">
-                                <rect key="frame" x="276" y="523" width="75" height="81"/>
+                                <rect key="frame" x="276" y="544" width="75" height="40"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="30"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -251,37 +244,44 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Giannis Antetokoumpo" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CdW-Yv-99B">
-                                <rect key="frame" x="16" y="764" width="189" height="21"/>
+                                <rect key="frame" x="20" y="735" width="189" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Giannis Antetokoumpo" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="j90-Ad-P2b">
-                                <rect key="frame" x="219" y="764" width="189" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Giannis Antetokoumpo" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="j90-Ad-P2b">
+                                <rect key="frame" x="219" y="735" width="189" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jH6-na-ejk">
-                                <rect key="frame" x="276" y="675" width="75" height="81"/>
+                                <rect key="frame" x="276" y="694" width="75" height="42"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="30"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cra-sU-dgv">
-                                <rect key="frame" x="49" y="675" width="75" height="81"/>
+                                <rect key="frame" x="49" y="689" width="75" height="47"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="30"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Tmc-xk-zIH">
-                                <rect key="frame" x="276" y="369" width="75" height="81"/>
+                                <rect key="frame" x="276" y="369" width="75" height="62"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="30"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Giannis Antetokoumpo" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bbg-xZ-2uB">
+                                <rect key="frame" x="219" y="428" width="189" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -291,17 +291,17 @@
                     </view>
                     <connections>
                         <outlet property="awayPlayerAssitsLabel" destination="Cra-sU-dgv" id="Mkw-YK-sSH"/>
-                        <outlet property="awayPlayerNameLabelAssists" destination="j90-Ad-P2b" id="rWb-qr-nXf"/>
-                        <outlet property="awayPlayerNameLabelPoints" destination="Bbg-xZ-2uB" id="FAd-QD-n31"/>
-                        <outlet property="awayPlayerNameLabelRebounds" destination="jPF-yM-Tq2" id="oCP-CX-fab"/>
+                        <outlet property="awayPlayerNameLabelAssists" destination="CdW-Yv-99B" id="ceD-bZ-IGi"/>
+                        <outlet property="awayPlayerNameLabelPoints" destination="DeE-cn-xUz" id="ISW-N7-o58"/>
+                        <outlet property="awayPlayerNameLabelRebounds" destination="RQL-HB-Hk0" id="trh-gc-3QH"/>
                         <outlet property="awayPlayerPointsLabel" destination="krG-aH-bHr" id="AiE-j1-eSl"/>
                         <outlet property="awayPlayerReboundsLabel" destination="DZi-kM-48d" id="bTg-56-e4W"/>
                         <outlet property="awayTeamImage" destination="TuM-Kt-exO" id="aRc-yr-caP"/>
                         <outlet property="awayTeamLabel" destination="ww4-9Y-d1O" id="36d-jB-FEl"/>
                         <outlet property="homePlayerAssistsLabel" destination="jH6-na-ejk" id="c5O-i9-qZv"/>
-                        <outlet property="homePlayerNameLabelAssists" destination="CdW-Yv-99B" id="tGD-0D-1aj"/>
-                        <outlet property="homePlayerNameLabelPoints" destination="DeE-cn-xUz" id="QKv-oH-eXh"/>
-                        <outlet property="homePlayerNameLabelRebounds" destination="RQL-HB-Hk0" id="IMv-ws-1mK"/>
+                        <outlet property="homePlayerNameLabelAssists" destination="j90-Ad-P2b" id="13d-rk-Qgz"/>
+                        <outlet property="homePlayerNameLabelPoints" destination="Bbg-xZ-2uB" id="STW-zJ-H24"/>
+                        <outlet property="homePlayerNameLabelRebounds" destination="jPF-yM-Tq2" id="h0b-zl-9aR"/>
                         <outlet property="homePlayerPointsLabel" destination="Tmc-xk-zIH" id="oKs-Ou-4z4"/>
                         <outlet property="homePlayerReboundsLabel" destination="Aej-XA-WUa" id="LbB-Tn-eYw"/>
                         <outlet property="homeTeamImage" destination="eub-WG-AtM" id="9lt-3K-YlY"/>

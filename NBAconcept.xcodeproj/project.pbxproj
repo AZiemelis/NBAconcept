@@ -101,8 +101,8 @@
 			isa = PBXGroup;
 			children = (
 				59EFE5EC274C30C200BA535C /* GamesViewController.swift */,
-				59246BBF274E5EDE00F726D6 /* StandingsViewController.swift */,
 				59246BC1274E5F3B00F726D6 /* WebViewController.swift */,
+				59246BBF274E5EDE00F726D6 /* StandingsViewController.swift */,
 				59246BBD274E5E8800F726D6 /* GameDetailViewController.swift */,
 				59EFE605274C523A00BA535C /* GameTableViewCell.swift */,
 				596F6F68274FACD200479604 /* StandingsTableViewCell.swift */,
