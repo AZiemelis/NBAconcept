@@ -330,10 +330,10 @@
             </objects>
             <point key="canvasLocation" x="1048" y="766"/>
         </scene>
-        <!--View Controller-->
+        <!--Standings View Controller-->
         <scene sceneID="aXO-cm-mBR">
             <objects>
-                <viewController id="e5O-Km-8b4" sceneMemberID="viewController">
+                <viewController id="e5O-Km-8b4" customClass="StandingsViewController" customModule="NBAconcept" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="1nL-Gc-C1W">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -365,7 +365,7 @@
                                     <color key="color" systemColor="systemIndigoColor"/>
                                 </activityIndicatorView>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="standingCell" rowHeight="79" id="d2c-X2-3Yh">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="standingCell" rowHeight="79" id="d2c-X2-3Yh" customClass="StandingsTableViewCell" customModule="NBAconcept" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="44.5" width="414" height="79"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="d2c-X2-3Yh" id="xH4-Oh-5LE">
@@ -406,6 +406,13 @@
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="lossesLabel" destination="0hw-4d-HVi" id="jbd-ox-ZWE"/>
+                                            <outlet property="positionLabel" destination="uJA-07-vah" id="RtK-Wu-qPJ"/>
+                                            <outlet property="teamImage" destination="U8O-Y5-BCj" id="myf-gk-sp8"/>
+                                            <outlet property="teamShortnameLabel" destination="rM5-Eo-S9o" id="N7l-tV-h8C"/>
+                                            <outlet property="winsLabel" destination="C2a-ZD-0uO" id="sFM-LO-2fM"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>

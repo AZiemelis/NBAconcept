@@ -25,6 +25,7 @@ struct Game: Codable {
 
 }
     struct homeTeam: Codable {
+        let teamId: String
         let nickName: String
         let logo: String
         let score: homeTeamScore
@@ -33,6 +34,7 @@ struct Game: Codable {
     }
     
     struct versusTeam: Codable {
+        let teamId: String
         let nickName: String
         let logo: String
         let score: versusTeamScore
