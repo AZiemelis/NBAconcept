@@ -12,24 +12,52 @@ class StandingsViewController: UIViewController {
     
     var standingsVariable: [Standings] = []
     var teamVariable: [Teams] = []
-
+    let calendarYear = ""
     
     
     @IBOutlet weak var tableView: UITableView!
-    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var yearLabel: UILabel!
     @IBOutlet weak var segmentedControl: UISegmentedControl!
     @IBOutlet weak var activityIndicatorView: UIActivityIndicatorView!
+    
+    var valueChanged = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-    
-        getNBAstandingsData(year: "2021")
+        yearLabel.text = "2021"
+        getNBAstandingsData(year: yearLabel.text!)
 
     }
     
     
     @IBAction func calendarButtonTapped(_ sender: UIBarButtonItem) {
+        var alertController:UIAlertController?
+            alertController = UIAlertController(title: "Enter Text",
+                message: "Enter some text below",
+                                                preferredStyle: .alert)
+
+        alertController!.addTextField(
+            configurationHandler: {(textField: UITextField!) in
+                    textField.placeholder = "Enter something"
+            })
+
+            let action = UIAlertAction(title: "Submit",
+                                       style: UIAlertAction.Style.default,
+                                       handler: {[weak self]
+                                       (paramAction:UIAlertAction!) in
+                if let textFields = alertController?.textFields{
+                    let theTextFields = textFields as [UITextField]
+                    let enteredText = theTextFields[0].text
+                    self!.yearLabel.text = enteredText!
+                    self?.getNBAstandingsData(year: enteredText!)
+                }
+            })
+
+            alertController?.addAction(action)
+        self.present(alertController!,
+                                       animated: true,
+                                       completion: nil)
         
     }
     
@@ -57,7 +85,7 @@ class StandingsViewController: UIViewController {
             "x-rapidapi-key": "29a89b941dmshb710b982fc842fdp17f010jsne45e8742fe9a"
         ]
 
-        let request = NSMutableURLRequest(url: NSURL(string: "https://api-nba-v1.p.rapidapi.com/standings/standard/2021")! as URL,
+        let request = NSMutableURLRequest(url: NSURL(string: "https://api-nba-v1.p.rapidapi.com/standings/standard/\(year)")! as URL,
                                                 cachePolicy: .useProtocolCachePolicy,
                                             timeoutInterval: 10.0)
         request.httpMethod = "GET"
@@ -66,10 +94,10 @@ class StandingsViewController: UIViewController {
         let session = URLSession.shared
         let dataTask = session.dataTask(with: request as URLRequest, completionHandler: { (data, response, error) -> Void in
             if (error != nil) {
-                print(error)
+                print(error!)
             } else {
                 let httpResponse = response as? HTTPURLResponse
-                print(httpResponse)
+                print(httpResponse!)
             }
             do {
                 let jsonData = try JSONDecoder().decode(StandingsAPI.self, from: data!)
@@ -133,6 +161,10 @@ class StandingsViewController: UIViewController {
 //        dataTask.resume()
 //    }
 
+    @IBAction func segementValueChanged(_ sender: UISegmentedControl) {
+        valueChanged = true
+        getNBAstandingsData(year: yearLabel.text!)
+    }
 }
 
 
@@ -150,19 +182,35 @@ extension StandingsViewController: UITableViewDelegate, UITableViewDataSource {
         
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "standingCell", for: indexPath) as? StandingsTableViewCell else {return UITableViewCell()}
         
-        for i in standingsVariable {
-            if i.conference.name == "west" && i.conference.rank == String(indexPath.row + 1) {
+        switch segmentedControl.selectedSegmentIndex {
+        case 0:
+            for i in standingsVariable {
+                if i.conference.name == "west" && i.conference.rank == String(indexPath.row + 1) {
 
-                //getTeamsInfo(teamId: i.teamId)
-    
-                cell.positionLabel.text = String(indexPath.row + 1)
-                cell.winsLabel.text = i.win
-                cell.lossesLabel.text = i.loss
-                cell.teamShortnameLabel.text = "teamID: \(i.teamId)"
+                    //getTeamsInfo(teamId: i.teamId)
+        
+                    cell.positionLabel.text = String(indexPath.row + 1)
+                    cell.winsLabel.text = i.win
+                    cell.lossesLabel.text = i.loss
+                    cell.teamShortnameLabel.text = "teamID: \(i.teamId)"
+                }
+            }
+        default:
+            for i in standingsVariable {
+                if i.conference.name == "east" && i.conference.rank == String(indexPath.row + 1) {
+
+                    //getTeamsInfo(teamId: i.teamId)
+        
+                    cell.positionLabel.text = String(indexPath.row + 1)
+                    cell.winsLabel.text = i.win
+                    cell.lossesLabel.text = i.loss
+                    cell.teamShortnameLabel.text = "teamID: \(i.teamId)"
+                }
             }
         }
+            
         
         return cell
     }
-    
+
 }
