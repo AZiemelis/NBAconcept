@@ -21,9 +21,7 @@ class GameDetailViewController: UIViewController {
     @IBOutlet weak var homeTeamLabel: UILabel!
     @IBOutlet weak var awayTeamLabel: UILabel!
     @IBOutlet weak var resultLabel: UILabel!
-    
-    @IBOutlet weak var playerProfileImage: UIImageView!
-    
+        
     //Team Names
     @IBOutlet weak var homePlayerNameLabelPoints: UILabel!
     @IBOutlet weak var homePlayerNameLabelRebounds: UILabel!
@@ -174,12 +172,13 @@ class GameDetailViewController: UIViewController {
     
     
     @IBAction func awayButtonPressed(_ sender: UIButton) {
-        
+        self.teamShortNameForUrl = ""
         self.teamShortNameForUrl = awayTeamShortName
         
     }
     
     @IBAction func homeButtonPressed(_ sender: UIButton) {
+        self.teamShortNameForUrl = ""
         self.teamShortNameForUrl = homeTeamShortName
     }
 

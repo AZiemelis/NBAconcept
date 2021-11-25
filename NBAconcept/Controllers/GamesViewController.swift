@@ -19,9 +19,9 @@ class GamesViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        createDatePicker()
 
-        var date = Date()
+        
+        let date = Date()
         let formatter = DateFormatter()
         
         formatter.timeZone = .current
@@ -55,8 +55,6 @@ class GamesViewController: UIViewController {
         }
     }
     
-   
-    
     func createDatePicker() {
         let toolbar = UIToolbar()
         toolbar.sizeToFit()
@@ -83,9 +81,16 @@ class GamesViewController: UIViewController {
         
         formatter.dateFormat = "yyyy-MM-dd"
         let dateInput = formatter.string(for: datePicker.date)
+        
         getNBAdata(gamesDate: dateInput!)
     }
 
+    
+    @IBAction func refreshButtonTapped(_ sender: UIBarButtonItem) {
+        viewDidLoad()
+    }
+    
+    
     
     func getNBAdata (gamesDate: String) {
         activityIndicator(animated: true)
