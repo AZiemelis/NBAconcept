@@ -46,7 +46,11 @@ class GameDetailViewController: UIViewController {
     @IBOutlet weak var homePlayerReboundsLabel: UILabel!
     @IBOutlet weak var homePlayerAssistsLabel: UILabel!
     
-
+    @IBOutlet weak var backgroundImageView1: UIImageView!
+    @IBOutlet weak var backgroundImageView0: UIImageView!
+    @IBOutlet weak var backgroundImageView2: UIImageView!
+    @IBOutlet weak var backgroundImageView3: UIImageView!
+    
     var context: NSManagedObjectContext?
     var gameId = String()
     var fullScore = String()
@@ -66,6 +70,11 @@ class GameDetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         getNBADetailData(gameID: gameId)
+        
+        backgroundImageView0.layer.cornerRadius = 20
+        backgroundImageView1.layer.cornerRadius = 20
+        backgroundImageView2.layer.cornerRadius = 20
+        backgroundImageView3.layer.cornerRadius = 20
         
         print(gameId)
         homeTeamImage.sd_setImage(with: URL(string: homeTeamLogo), placeholderImage: UIImage(named: "team.png"))
