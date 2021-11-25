@@ -130,7 +130,6 @@
                                 <buttonConfiguration key="configuration" style="plain" title="awayButton"/>
                                 <connections>
                                     <action selector="awayButtonPressed:" destination="A0x-fo-UUB" eventType="touchUpInside" id="Jlx-cJ-si6"/>
-                                    <action selector="homeButtonPressed:" destination="A0x-fo-UUB" eventType="touchUpInside" id="fWa-7c-iMY"/>
                                     <segue destination="F7G-Gt-ESq" kind="presentation" id="Wuc-vo-qO5"/>
                                 </connections>
                             </button>

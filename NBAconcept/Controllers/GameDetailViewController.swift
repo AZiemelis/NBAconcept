@@ -172,13 +172,11 @@ class GameDetailViewController: UIViewController {
     
     
     @IBAction func awayButtonPressed(_ sender: UIButton) {
-        self.teamShortNameForUrl = ""
         self.teamShortNameForUrl = awayTeamShortName
         
     }
     
     @IBAction func homeButtonPressed(_ sender: UIButton) {
-        self.teamShortNameForUrl = ""
         self.teamShortNameForUrl = homeTeamShortName
     }
 
