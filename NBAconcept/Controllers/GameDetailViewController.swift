@@ -16,6 +16,10 @@ class GameDetailViewController: UIViewController {
 
     var gameDetail: [GameDetail] = []
     
+    @IBOutlet weak var pointsLabel: UILabel!
+    @IBOutlet weak var reboundsLabel: UILabel!
+    @IBOutlet weak var assistsLabel: UILabel!
+    
     @IBOutlet weak var activityIndicatorView: UIActivityIndicatorView!
     
     @IBOutlet weak var homeTeamImage: UIImageView!
@@ -36,7 +40,7 @@ class GameDetailViewController: UIViewController {
     //Team Leaders
     @IBOutlet weak var awayPlayerPointsLabel: UILabel!
     @IBOutlet weak var awayPlayerReboundsLabel: UILabel!
-    @IBOutlet weak var awayPlayerAssitsLabel: UILabel!
+    @IBOutlet weak var awayPlayerAssistsLabel: UILabel!
     
     @IBOutlet weak var homePlayerPointsLabel: UILabel!
     @IBOutlet weak var homePlayerReboundsLabel: UILabel!
@@ -61,8 +65,8 @@ class GameDetailViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         getNBADetailData(gameID: gameId)
+        
         print(gameId)
         homeTeamImage.sd_setImage(with: URL(string: homeTeamLogo), placeholderImage: UIImage(named: "team.png"))
         
@@ -95,6 +99,25 @@ class GameDetailViewController: UIViewController {
     }
     
     func getNBADetailData (gameID: String) {
+        
+        pointsLabel.text = ""
+        reboundsLabel.text = ""
+        assistsLabel.text = ""
+        
+        homePlayerNameLabelPoints.text = ""
+        homePlayerPointsLabel.text = ""
+        homePlayerNameLabelRebounds.text = ""
+        homePlayerReboundsLabel.text = ""
+        homePlayerNameLabelAssists.text = ""
+        homePlayerAssistsLabel.text = ""
+        
+        awayPlayerNameLabelPoints.text = ""
+        awayPlayerPointsLabel.text = ""
+        awayPlayerNameLabelRebounds.text = ""
+        awayPlayerReboundsLabel.text = ""
+        awayPlayerNameLabelAssists.text = ""
+        awayPlayerAssistsLabel.text = ""
+        
         activityIndicator(animated: true)
         let headers = [
             "x-rapidapi-host": "api-nba-v1.p.rapidapi.com",
@@ -189,14 +212,16 @@ class GameDetailViewController: UIViewController {
                                 if Int(j.assists!)! >= awayPlayerMaxAssists {
                                     awayPlayerMaxAssists = Int(j.assists!)!
                                     self.awayPlayerNameLabelAssists.text = j.name
-                                    self.awayPlayerAssitsLabel.text = String(awayPlayerMaxAssists)
+                                    self.awayPlayerAssistsLabel.text = String(awayPlayerMaxAssists)
                                     
         
                                 }
                             }
                         }
                     }
-                    
+                    self.pointsLabel.text = "Points"
+                    self.reboundsLabel.text = "Rebounds"
+                    self.assistsLabel.text = "Assists"
                     self.activityIndicator(animated: false)
                 }
             }catch {
@@ -204,6 +229,9 @@ class GameDetailViewController: UIViewController {
             }
         })
         dataTask.resume()
+        
+
+        
     }
     
     

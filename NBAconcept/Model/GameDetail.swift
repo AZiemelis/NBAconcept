@@ -7,34 +7,34 @@
 
 import Foundation
 
-struct GameDetailAPI: Codable {
+struct GameDetailAPI: Decodable {
     let api: GameDetailMainAPI
     
 }
 
-struct GameDetailMainAPI: Codable {
+struct GameDetailMainAPI: Decodable {
     let game: [GameDetail]
 }
 
 
-struct GameDetail: Codable {
+struct GameDetail: Decodable {
 
     let vTeam: GameDetailVersusTeam
     let hTeam: GameDetailHomeTeam
 
 }
 
-struct GameDetailHomeTeam: Codable {
+struct GameDetailHomeTeam: Decodable {
     let leaders: [GameDetailLeaders]
 
 }
 
-struct GameDetailVersusTeam: Codable {
+struct GameDetailVersusTeam: Decodable {
     let leaders: [GameDetailLeaders]
 
 }
     
-struct GameDetailLeaders: Codable {
+struct GameDetailLeaders: Decodable {
     let assists: String?
     let rebounds: String?
     let points: String?

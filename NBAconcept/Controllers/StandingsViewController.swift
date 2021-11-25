@@ -6,26 +6,58 @@
 //
 
 import UIKit
+import SDWebImage
 
 class StandingsViewController: UIViewController {
     
     var standingsVariable: [Standings] = []
+    var teamVariable: [Teams] = []
 
+    
+    
+    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var segmentedControl: UISegmentedControl!
+    @IBOutlet weak var activityIndicatorView: UIActivityIndicatorView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
     
         getNBAstandingsData(year: "2021")
-        // Do any additional setup after loading the view.
+
     }
+    
+    
+    @IBAction func calendarButtonTapped(_ sender: UIBarButtonItem) {
+        
+    }
+    
+    func activityIndicator(animated: Bool) {
+        DispatchQueue.main.async {
+            if animated {
+                
+                self.activityIndicatorView.isHidden = false
+                self.activityIndicatorView.startAnimating()
+            
+            }else {
+                
+                self.activityIndicatorView.isHidden = true
+                self.activityIndicatorView.startAnimating()
+                
+            }
+        }
+    }
+    
 
     func getNBAstandingsData(year: String) {
+        activityIndicator(animated: true)
         let headers = [
             "x-rapidapi-host": "api-nba-v1.p.rapidapi.com",
             "x-rapidapi-key": "29a89b941dmshb710b982fc842fdp17f010jsne45e8742fe9a"
         ]
 
-        let request = NSMutableURLRequest(url: NSURL(string: "https://api-nba-v1.p.rapidapi.com/standings/standard/\(year)")! as URL,
+        let request = NSMutableURLRequest(url: NSURL(string: "https://api-nba-v1.p.rapidapi.com/standings/standard/2021")! as URL,
                                                 cachePolicy: .useProtocolCachePolicy,
                                             timeoutInterval: 10.0)
         request.httpMethod = "GET"
@@ -34,18 +66,17 @@ class StandingsViewController: UIViewController {
         let session = URLSession.shared
         let dataTask = session.dataTask(with: request as URLRequest, completionHandler: { (data, response, error) -> Void in
             if (error != nil) {
-                print(error!)
+                print(error)
             } else {
                 let httpResponse = response as? HTTPURLResponse
-                print(httpResponse!)
+                print(httpResponse)
             }
             do {
                 let jsonData = try JSONDecoder().decode(StandingsAPI.self, from: data!)
                 DispatchQueue.main.async {
                     self.standingsVariable = jsonData.api.standings
-                    print(self.standingsVariable)
-//                    self.TableView.reloadData()
-//                    self.activityIndicator(animated: false)
+                    self.tableView.reloadData()
+                    self.activityIndicator(animated: false)
                 }
             }catch {
                 print("err:", error)
@@ -56,19 +87,54 @@ class StandingsViewController: UIViewController {
         dataTask.resume()
     }
     
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
+//    func getTeamsInfo(teamId: String) {
+//        let headers = [
+//            "x-rapidapi-host": "api-nba-v1.p.rapidapi.com",
+//            "x-rapidapi-key": "29a89b941dmshb710b982fc842fdp17f010jsne45e8742fe9a"
+//        ]
+//
+//        let request = NSMutableURLRequest(url: NSURL(string: "https://api-nba-v1.p.rapidapi.com/teams/teamId/11")! as URL,
+//                                                cachePolicy: .useProtocolCachePolicy,
+//                                            timeoutInterval: 10.0)
+//        request.httpMethod = "GET"
+//        request.allHTTPHeaderFields = headers
+//
+//        let session = URLSession.shared
+//        let dataTask = session.dataTask(with: request as URLRequest, completionHandler: { (data, response, error) -> Void in
+//            if (error != nil) {
+//                print(error!)
+//            } else {
+//                let httpResponse = response as? HTTPURLResponse
+//                print(httpResponse!)
+//            }
+//
+//            do {
+//                let jsonData = try JSONDecoder().decode(TeamsAPI.self, from: data!)
+//                DispatchQueue.main.async {
+//                    self.teamVariable = jsonData.api.teams
+//
+////                    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+////                        guard let cell = tableView.dequeueReusableCell(withIdentifier: "standingCell", for: indexPath) as? StandingsTableViewCell else {return UITableViewCell()}
+////
+////                        cell.teamShortnameLabel.text = self.teamVariable[indexPath.row].shortName
+////                        cell.teamImage.sd_setImage(with: URL(string: self.teamVariable[indexPath.row].logo))
+////
+////                        return cell
+////                    }
+//                    self.tableView.reloadData()
+//
+//                   //print(self.teamVariable)
+//                }
+//            }catch {
+//                print("err:", error)
+//            }
+//
+//        })
+//        dataTask.resume()
+//    }
 
 }
+
 
 extension StandingsViewController: UITableViewDelegate, UITableViewDataSource {
     
@@ -77,13 +143,24 @@ extension StandingsViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 100
+        return 79
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "standingCell", for: indexPath) as? StandingsTableViewCell else {return UITableViewCell()}
         
+        for i in standingsVariable {
+            if i.conference.name == "west" && i.conference.rank == String(indexPath.row + 1) {
+
+                //getTeamsInfo(teamId: i.teamId)
+    
+                cell.positionLabel.text = String(indexPath.row + 1)
+                cell.winsLabel.text = i.win
+                cell.lossesLabel.text = i.loss
+                cell.teamShortnameLabel.text = "teamID: \(i.teamId)"
+            }
+        }
         
         return cell
     }

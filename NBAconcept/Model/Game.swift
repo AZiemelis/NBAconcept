@@ -7,24 +7,24 @@
 
 import Foundation
 
-struct API: Codable {
+struct API: Decodable {
     let api: MainAPI
     
 }
 
-struct MainAPI: Codable {
+struct MainAPI: Decodable {
     let games: [Game]
 }
 
 
-struct Game: Codable {
+struct Game: Decodable {
    
     let gameId: String
     let vTeam: versusTeam
     let hTeam: homeTeam
 
 }
-    struct homeTeam: Codable {
+    struct homeTeam: Decodable {
         let teamId: String
         let nickName: String
         let logo: String
@@ -33,7 +33,7 @@ struct Game: Codable {
         let shortName: String
     }
     
-    struct versusTeam: Codable {
+    struct versusTeam: Decodable {
         let teamId: String
         let nickName: String
         let logo: String
@@ -42,11 +42,11 @@ struct Game: Codable {
         let shortName: String
     }
     
-    struct homeTeamScore: Codable {
+    struct homeTeamScore: Decodable {
         let points: String
     }
     
-    struct versusTeamScore: Codable {
+    struct versusTeamScore: Decodable {
         let points: String
     }
     

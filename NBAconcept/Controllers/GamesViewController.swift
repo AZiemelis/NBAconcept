@@ -19,7 +19,7 @@ class GamesViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        self.title = "Games List"
         
         let date = Date()
         let formatter = DateFormatter()
