@@ -40,6 +40,7 @@ class StandingsViewController: UIViewController {
         alertController!.addTextField(
             configurationHandler: {(textField: UITextField!) in
                     textField.placeholder = "Enter year"
+                    textField.keyboardType = .numberPad
             })
 
             let action = UIAlertAction(title: "OK",
